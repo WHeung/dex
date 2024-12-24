@@ -10,6 +10,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -20,8 +21,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+      // "*": ["node_modules/*"]
+    },
+    "types": ["react", "react-dom", "node"],
+    "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "windi.config.ts", "postcss.config.ts"],
+  "include": ["global.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "windi.config.ts", "postcss.config.ts"],
   "exclude": ["node_modules"]
 }

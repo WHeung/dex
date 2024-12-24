@@ -1,7 +1,8 @@
-import { defineConfig } from "windicss/helpers";
+
+const helper = require('windicss/helpers');
 import formsPlugin from "windicss/plugin/forms";
 
-export default defineConfig({
+export default helper.defineConfig({
   darkMode: "class",
   safelist: "p-3 p-4 p-5",
   extract: {

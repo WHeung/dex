@@ -1,13 +1,7 @@
-import { http } from "wagmi";
-import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import {
-  arbitrum,
-  base,
-  mainnet,
-  optimism,
-  polygon,
-  sepolia,
-} from "wagmi/chains";
+// import { http } from "wagmi";
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { createStorage } from 'wagmi';
+import { arbitrum, base, mainnet, optimism, polygon, sepolia } from 'wagmi/chains';
 
 // export const wagmiConfig = getDefaultConfig({
 //   appName: "My RainbowKit App",
@@ -20,18 +14,11 @@ import {
 // });
 
 export const wagmiConfig = getDefaultConfig({
-  appName: "My RainbowKit App",
-  projectId: "52d67f11ca895dfa5e6056ef260c33da",
-  chains: [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
-  ],
+  appName: 'My RainbowKit App',
+  projectId: '52d67f11ca895dfa5e6056ef260c33da',
+  chains: [mainnet, polygon, optimism, arbitrum, base, ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : [])],
   ssr: true,
   storage: createStorage({
-    storage: localStorage,
+    storage: typeof window !== 'undefined' ? window.localStorage : undefined,
   }),
 });
